@@ -1,0 +1,100 @@
+<!-- components/projects/projects.component.html -->
+<section class="py-5 bg-light" id="projects">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold position-relative pb-2 d-inline-block">
+        My <span class="text-primary">Projects</span>
+      </h2>
+    </div>
+
+    <ngb-carousel
+      [showNavigationArrows]="true"
+      [showNavigationIndicators]="true"
+      [interval]="5000"
+      [pauseOnHover]="true"
+      [pauseOnFocus]="true"
+      class="mb-5"
+    >
+      <ng-template ngbSlide *ngFor="let project of projectHighlights">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="project-img text-center">
+              <img
+                [src]="project.image"
+                [alt]="project.title"
+                class="img-fluid rounded shadow-sm"
+                style="max-width: 80%"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="project-info">
+              <h3 class="fw-bold mb-3">{{ project.title }}</h3>
+              <p class="mb-4">{{ project.description }}</p>
+              <div class="mb-4">
+                <span
+                  class="badge bg-primary me-2 mb-2"
+                  *ngFor="let tech of project.technologies"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+              <div>
+                <a
+                  [href]="project.liveLink"
+                  target="_blank"
+                  class="btn btn-primary me-2 mb-2"
+                  >Live Demo</a
+                >
+                <a
+                  [href]="project.codeLink"
+                  target="_blank"
+                  class="btn btn-outline-primary mb-2"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let project of projects">
+        <div class="card h-100 border-0 shadow-sm">
+          <img
+            [src]="project.image"
+            class="card-img-top"
+            [alt]="project.title"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <div class="mb-3">
+              <span
+                class="badge bg-primary me-1 mb-1"
+                *ngFor="let tech of project.technologies"
+              >
+                {{ tech }}
+              </span>
+            </div>
+            <div class="d-flex">
+              <a
+                [href]="project.liveLink"
+                target="_blank"
+                class="btn btn-sm btn-primary me-2"
+                >Live Demo</a
+              >
+              <a
+                [href]="project.codeLink"
+                target="_blank"
+                class="btn btn-sm btn-outline-primary"
+                >View Code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

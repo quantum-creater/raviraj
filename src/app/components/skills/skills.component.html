@@ -1,0 +1,44 @@
+<!-- components/skills/skills.component.html -->
+<section class="py-5 bg-light" id="skills">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold position-relative pb-2 d-inline-block">
+        My <span class="text-primary">Skills</span>
+      </h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="mb-4 text-center">Frontend Skills</h3>
+
+        <div class="mb-4" *ngFor="let skill of frontendSkills">
+          <div class="d-flex justify-content-between mb-1">
+            <span class="fw-bold">{{ skill.name }}</span>
+            <span>{{ skill.percentage }}%</span>
+          </div>
+          <ngb-progressbar
+            [value]="skill.percentage"
+            [type]="skill.type"
+            height="10px"
+          ></ngb-progressbar>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="mb-4 text-center">Backend Skills</h3>
+
+        <div class="mb-4" *ngFor="let skill of backendSkills">
+          <div class="d-flex justify-content-between mb-1">
+            <span class="fw-bold">{{ skill.name }}</span>
+            <span>{{ skill.percentage }}%</span>
+          </div>
+          <ngb-progressbar
+            [value]="skill.percentage"
+            [type]="skill.type"
+            height="10px"
+          ></ngb-progressbar>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
