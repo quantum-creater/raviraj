@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -10,7 +10,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HeaderComponent {
   isMenuCollapsed = true;
-  activeSection = 'home';
+  activeSection: string = 'home';
 
   navItems = [
     { name: 'Home', link: 'home' },
@@ -22,27 +22,13 @@ export class HeaderComponent {
     { name: 'Contact', link: 'contact' },
   ];
 
-  ngOnInit(): void {
-    this.checkActiveSection();
-  }
-
   toggleNavigation(): void {
     if (window.innerWidth < 992) {
       this.isMenuCollapsed = true;
     }
   }
 
-  @HostListener('window:scroll')
-  checkActiveSection(): void {
-    const sections = document.querySelectorAll('section');
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 150;
-      const sectionId = section.getAttribute('id') || '';
-
-      if (window.scrollY >= sectionTop) {
-        this.activeSection = sectionId;
-      }
-    });
+  setActiveOption(link: string): void {
+    this.activeSection = link;
   }
 }

@@ -33,18 +33,7 @@ export class ServicesComponent {
       description:
         'Designing websites that look great on all devices from desktops to smartphones.',
     },
-    {
-      icon: 'bxl-aws',
-      title: 'Cloud Deployment',
-      description:
-        'Deploying applications on cloud platforms like AWS, Azure, and Google Cloud with proper CI/CD.',
-    },
-    {
-      icon: 'bx-data',
-      title: 'Database Design',
-      description:
-        'Designing and implementing efficient database schemas for both SQL and NoSQL databases.',
-    },
+
     {
       icon: 'bx-code-block',
       title: 'API Development',

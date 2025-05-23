@@ -15,41 +15,53 @@ import {
   styleUrl: './contact.component.css',
 })
 export class ContactComponent {
-  // contactForm!: FormGroup;
-  // submitted = false;
-  // loading = false;
-  // formSuccess = false;
+  mydetails = {
+    name: 'Ravi Raj',
+    dob: '9 March 2000',
+    experience: '3+ Years',
+    mobile: '+91-9155558993',
+    email: 'seraviraj@gmail.com',
+    location: 'Darbhanga, Bihar, India',
+  };
+  contactForm!: FormGroup;
+  submitted = false;
+  loading = false;
+  formSuccess = false;
   currentYear = new Date().getFullYear();
-  // constructor(private formBuilder: FormBuilder) {}
-  // ngOnInit(): void {
-  //   this.contactForm = this.formBuilder.group({
-  //     name: ['', Validators.required],
-  //     email: ['', [Validators.required, Validators.email]],
-  //     subject: ['', Validators.required],
-  //     message: ['', Validators.required],
-  //   });
-  // }
-  // // convenience getter for easy access to form fields
-  // get f() {
-  //   return this.contactForm.controls;
-  // }
-  // onSubmit(): void {
-  //   this.submitted = true;
-  //   // stop here if form is invalid
-  //   if (this.contactForm.invalid) {
-  //     return;
-  //   }
-  //   this.loading = true;
-  //   // Simulate API call
-  //   setTimeout(() => {
-  //     this.loading = false;
-  //     this.formSuccess = true;
-  //     this.contactForm.reset();
-  //     this.submitted = false;
-  //     // Hide success message after 5 seconds
-  //     setTimeout(() => {
-  //       this.formSuccess = false;
-  //     }, 5000);
-  //   }, 1500);
-  // }
+  constructor(private formBuilder: FormBuilder) {}
+  ngOnInit(): void {
+    this.contactForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
+    });
+  }
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.contactForm.controls;
+  }
+  onSubmit(): void {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.contactForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    // Simulate API call
+    setTimeout(() => {
+      this.loading = false;
+      this.formSuccess = true;
+      this.contactForm.reset();
+      this.submitted = false;
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        this.formSuccess = false;
+      }, 5000);
+    }, 1500);
+  }
+  resetForm(): void {
+    this.submitted = false;
+    this.contactForm.reset();
+  }
 }

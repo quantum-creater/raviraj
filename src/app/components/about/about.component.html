@@ -1,6 +1,6 @@
 <!-- components/about/about.component.html -->
 <section class="py-5 bg-light" id="about">
-  <div class="container">
+  <div class="container py-3">
     <div class="text-center mb-5">
       <h2 class="fw-bold position-relative pb-2 d-inline-block">
         About <span class="text-primary">Me</span>
@@ -11,7 +11,7 @@
       <div class="col-lg-6 mb-4 mb-lg-0">
         <div class="about-img text-center">
           <img
-            src="assets/images/ravi2.png"
+            src="assets/images/ravi1.png"
             alt="About Ravi"
             class="img-fluid rounded"
             style="max-width: 80%"
@@ -31,14 +31,20 @@
 
         <div class="row mb-4">
           <div class="col-md-6 mb-3">
-            <p class="mb-1"><strong>Name:</strong> Ravi Raj</p>
-            <p class="mb-1"><strong>Date of Birth:</strong> 15 April 1997</p>
-            <p class="mb-1"><strong>Experience:</strong> 3+ Years</p>
+            <p class="mb-1"><strong>Name:</strong> {{ mydetails.name }}</p>
+            <p class="mb-1">
+              <strong>Date of Birth:</strong> {{ mydetails.dob }}
+            </p>
+            <p class="mb-1">
+              <strong>Experience:</strong> {{ mydetails.experience }}
+            </p>
           </div>
           <div class="col-md-6 mb-3">
-            <p class="mb-1"><strong>Phone:</strong> +91 9876543210</p>
-            <p class="mb-1"><strong>Email:</strong> raviexample.com</p>
-            <p class="mb-1"><strong>Location:</strong> New Delhi, India</p>
+            <p class="mb-1"><strong>Phone:</strong> {{ mydetails.mobile }}</p>
+            <p class="mb-1"><strong>Email:</strong> {{ mydetails.email }}</p>
+            <p class="mb-1">
+              <strong>Location:</strong> {{ mydetails.location }}
+            </p>
           </div>
         </div>
 

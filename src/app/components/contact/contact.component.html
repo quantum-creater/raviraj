@@ -1,6 +1,6 @@
 <!-- components/contact/contact.component.html -->
 <section class="py-5 bg-dark text-light" id="contact">
-  <div class="container">
+  <div class="container py-3">
     <div class="text-center mb-5">
       <h2 class="fw-bold position-relative pb-2 d-inline-block text-light">
         Contact <span class="text-primary">Me</span>
@@ -23,7 +23,7 @@
               </div>
               <div>
                 <h5 class="mb-0">Location</h5>
-                <p class="mb-0">New Delhi, India</p>
+                <p class="mb-0">{{ mydetails.location }}</p>
               </div>
             </div>
 
@@ -33,7 +33,7 @@
               </div>
               <div>
                 <h5 class="mb-0">Email</h5>
-                <p class="mb-0">raviexample.com</p>
+                <p class="mb-0">{{ mydetails.email }}</p>
               </div>
             </div>
 
@@ -43,7 +43,7 @@
               </div>
               <div>
                 <h5 class="mb-0">Phone</h5>
-                <p class="mb-0">+91 9876543210</p>
+                <p class="mb-0">{{ mydetails.mobile }}</p>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
         </div>
       </div>
 
-      <!-- <div class="col-md-7">
+      <div class="col-md-7">
         <div class="contact-form bg-dark p-4 rounded shadow">
           <h3 class="mb-4">Send Message</h3>
           <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
@@ -105,14 +105,16 @@
                     id="name"
                     placeholder="John Doe"
                     formControlName="name"
-                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
                   />
                   <label for="name" class="text-dark">Your Name</label>
                   <div
-                    *ngIf="submitted && f.name.errors"
+                    *ngIf="submitted && f['name'].errors"
                     class="invalid-feedback"
                   >
-                    <div *ngIf="f.name.errors.required">Name is required</div>
+                    <div *ngIf="f['name'].errors?.['required']">
+                      Name is required
+                    </div>
                   </div>
                 </div>
               </div>
@@ -125,15 +127,19 @@
                     id="email"
                     placeholder="name@example.com"
                     formControlName="email"
-                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
                   />
                   <label for="email" class="text-dark">Your Email</label>
                   <div
-                    *ngIf="submitted && f.email.errors"
+                    *ngIf="submitted && f['email'].errors"
                     class="invalid-feedback"
                   >
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email must be valid</div>
+                    <div *ngIf="f['email'].errors?.['required']">
+                      Email is required
+                    </div>
+                    <div *ngIf="f['email'].errors?.['email']">
+                      Email must be valid
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,14 +152,16 @@
                     id="subject"
                     placeholder="Subject"
                     formControlName="subject"
-                    [ngClass]="{ 'is-invalid': submitted && f.subject.errors }"
+                    [ngClass]="{
+                      'is-invalid': submitted && f['subject'].errors
+                    }"
                   />
                   <label for="subject" class="text-dark">Subject</label>
                   <div
-                    *ngIf="submitted && f.subject.errors"
+                    *ngIf="submitted && f['subject'].errors"
                     class="invalid-feedback"
                   >
-                    <div *ngIf="f.subject.errors.required">
+                    <div *ngIf="f['subject'].errors?.['required']">
                       Subject is required
                     </div>
                   </div>
@@ -168,14 +176,16 @@
                     placeholder="Your message"
                     style="height: 150px"
                     formControlName="message"
-                    [ngClass]="{ 'is-invalid': submitted && f.message.errors }"
+                    [ngClass]="{
+                      'is-invalid': submitted && f['message'].errors
+                    }"
                   ></textarea>
                   <label for="message" class="text-dark">Your Message</label>
                   <div
-                    *ngIf="submitted && f.message.errors"
+                    *ngIf="submitted && f['message'].errors"
                     class="invalid-feedback"
                   >
-                    <div *ngIf="f.message.errors.required">
+                    <div *ngIf="f['message'].errors?.['required']">
                       Message is required
                     </div>
                   </div>
@@ -192,6 +202,14 @@
                   ></span>
                   Send Message
                 </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary py-3 px-4 ms-2"
+                  (click)="resetForm()"
+                  [disabled]="loading"
+                >
+                  Reset
+                </button>
               </div>
             </div>
           </form>
@@ -201,7 +219,7 @@
             Your message has been sent successfully!
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </section>

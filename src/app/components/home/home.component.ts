@@ -1,9 +1,12 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
   ElementRef,
   OnInit,
   ViewChild,
   AfterViewInit,
+  Inject,
+  PLATFORM_ID,
 } from '@angular/core';
 import Typed from 'typed.js';
 
@@ -16,8 +19,10 @@ import Typed from 'typed.js';
 export class HomeComponent implements AfterViewInit {
   @ViewChild('typedElement') typedElement!: ElementRef;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngAfterViewInit(): void {
-    if (this.typedElement) {
+    if (isPlatformBrowser(this.platformId) && this.typedElement) {
       const typed = new Typed(this.typedElement.nativeElement, {
         strings: [
           'Full Stack Developer',

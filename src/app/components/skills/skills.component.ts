@@ -28,6 +28,6 @@ export class SkillsComponent {
     { name: 'Express.js', percentage: 80, type: 'info' },
     { name: 'MongoDB', percentage: 75, type: 'primary' },
     { name: 'SQL', percentage: 70, type: 'danger' },
-    { name: 'AWS', percentage: 65, type: 'warning' },
+    { name: 'NestJS', percentage: 65, type: 'warning' },
   ];
 }
