@@ -1,34 +1,65 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbCollapseModule,
+  NgbDropdownModule,
+} from '@ng-bootstrap/ng-bootstrap';
+interface NavItem {
+  name: string;
+  link: string;
+}
+
+interface DropdownItem {
+  name: string;
+  link: string;
+  divider?: boolean;
+}
+
+interface DropdownMenu {
+  name: string;
+  items: DropdownItem[];
+}
 
 @Component({
   selector: 'app-header',
-  imports: [NgFor, NgbCollapseModule],
+  imports: [NgFor, NgbCollapseModule, NgIf, NgbDropdownModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   isMenuCollapsed = true;
-  activeSection: string = 'home';
+  activeSection = '';
 
-  navItems = [
+  // Regular navigation items (before dropdowns)
+  regularNavItems: NavItem[] = [
     { name: 'Home', link: 'home' },
     { name: 'About', link: 'about' },
-    { name: 'Education', link: 'education' },
-    { name: 'Skills', link: 'skills' },
+  ];
+
+  // Dropdown menus configuration
+  dropdownMenus: DropdownMenu[] = [
+    {
+      name: 'Portfolio',
+      items: [
+        { name: 'Education', link: 'education' },
+        { name: 'Skills', link: 'skills' },
+        { name: 'Certification', link: 'certification' },
+      ],
+    },
+  ];
+
+  // Navigation items after dropdowns
+  endNavItems: NavItem[] = [
     { name: 'Services', link: 'services' },
     { name: 'Projects', link: 'projects' },
     { name: 'Contact', link: 'contact' },
   ];
 
-  toggleNavigation(): void {
-    if (window.innerWidth < 992) {
-      this.isMenuCollapsed = true;
-    }
+  setActiveOption(section: string) {
+    this.activeSection = section;
   }
 
-  setActiveOption(link: string): void {
-    this.activeSection = link;
+  toggleNavigation() {
+    this.isMenuCollapsed = true;
   }
 }

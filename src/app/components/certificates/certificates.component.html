@@ -1,0 +1,30 @@
+<!-- Certificates Section -->
+<section class="py-5 bg-white" id="certification">
+  <div class="container py-3">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold position-relative pb-2 d-inline-block">
+        My <span class="text-primary">Certifications</span>
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="row">
+          <div *ngFor="let cert of certificates" class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title text-primary">{{ cert.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ cert.issuer }}</h6>
+                <p class="card-text">
+                  <small class="text-muted">Issued: {{ cert.date }}</small>
+                </p>
+                <div *ngIf="cert.credentialId" class="text-muted small">
+                  Credential ID: {{ cert.credentialId }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

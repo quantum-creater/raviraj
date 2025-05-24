@@ -21,7 +21,58 @@
         id="navbarNav"
       >
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item" *ngFor="let item of navItems">
+          <!-- Regular nav items -->
+          <li class="nav-item" *ngFor="let item of regularNavItems">
+            <a
+              class="nav-link px-3"
+              [class.active]="activeSection === item.link"
+              [href]="'#' + item.link"
+              (click)="setActiveOption(item.link); toggleNavigation()"
+              >{{ item.name }}</a
+            >
+          </li>
+
+          <!-- Dynamic Dropdown Menus -->
+          <li
+            class="nav-item dropdown"
+            ngbDropdown
+            placement="bottom-right"
+            *ngFor="let dropdown of dropdownMenus"
+          >
+            <button
+              class="nav-link dropdown-toggle px-3 btn btn-link text-decoration-none"
+              type="button"
+              [id]="dropdown.name.toLowerCase() + 'Dropdown'"
+              ngbDropdownToggle
+            >
+              {{ dropdown.name }}
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-dark"
+              ngbDropdownMenu
+              [attr.aria-labelledby]="dropdown.name.toLowerCase() + 'Dropdown'"
+            >
+              <ng-container
+                *ngFor="let item of dropdown.items; let last = last"
+              >
+                <a
+                  class="dropdown-item"
+                  [href]="'#' + item.link"
+                  (click)="setActiveOption(item.link); toggleNavigation()"
+                  [class.active]="activeSection === item.link"
+                >
+                  {{ item.name }}
+                </a>
+                <div
+                  *ngIf="item.divider && !last"
+                  class="dropdown-divider"
+                ></div>
+              </ng-container>
+            </div>
+          </li>
+
+          <!-- Regular nav items after dropdowns -->
+          <li class="nav-item" *ngFor="let item of endNavItems">
             <a
               class="nav-link px-3"
               [class.active]="activeSection === item.link"

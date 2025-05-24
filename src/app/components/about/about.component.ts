@@ -1,18 +1,22 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
 export class AboutComponent {
-  mydetails = {
+  profileData = {
     name: 'Ravi Raj',
-    dob: '9 March 2000',
-    experience: '3+ Years',
-    mobile: '+91-9155558993',
+    birthday: '9 March 2000',
+    age: 30,
+    website: 'www.example.com',
+    degree: 'Graduation',
+    phone: '+91-9155558993',
     email: 'seraviraj@gmail.com',
-    location: 'Darbhanga, Bihar, India',
+    city: 'Darbhanga, Bihar, India',
+    freelance: 'Available',
   };
 }

@@ -27,14 +27,14 @@ export class ProjectsComponent {
     {
       id: 1,
       category: 'CONSTRUCTION',
-      title: 'Lorem ipsum dolor sit amet consectetur',
+      title: 'Smart Infrastructure Solutions for Urban Development',
       projectUrl: 'https://vsispl.in',
       badge: 'Construction',
     },
     {
       id: 2,
       category: 'INSTITUTE',
-      title: 'Make Paying Easier With Wallet',
+      title: 'Digital Wallet Training with Certification',
       projectUrl: 'https://skycomputereducation.com/homepage',
       badge: 'Institute',
     },

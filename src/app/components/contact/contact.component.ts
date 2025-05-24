@@ -23,6 +23,13 @@ export class ContactComponent {
     email: 'seraviraj@gmail.com',
     location: 'Darbhanga, Bihar, India',
   };
+  socialMedia = {
+    facebook: 'https://www.facebook.com/seraviraj',
+    instaGram: 'https://www.instagram.com/seraviraj',
+    twitter: 'https://x.com/seraviraj',
+    linkedIn: 'https://www.linkedin.com/in/seraviraj',
+    website: 'https://seraviraj.github.io/raviraj/',
+  };
   contactForm!: FormGroup;
   submitted = false;
   loading = false;

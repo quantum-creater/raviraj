@@ -8,72 +8,27 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-6 mb-4">
-        <div class="card border-primary h-100">
+      <div class="col-lg-10 mx-auto">
+        <div
+          *ngFor="let edu of education; let i = index"
+          class="card mb-4 shadow-sm"
+        >
           <div class="card-body">
-            <div class="d-flex justify-content-between mb-3">
-              <h4 class="card-title">B.Tech in Computer Science</h4>
-              <span class="badge bg-primary rounded-pill">2015-2019</span>
+            <div class="row">
+              <div class="col-md-8">
+                <h4 class="card-title text-primary">{{ edu.degree }}</h4>
+                <h5 class="card-subtitle mb-2 text-muted">
+                  {{ edu.institution }}
+                </h5>
+                <p class="card-text">{{ edu.description }}</p>
+              </div>
+              <div class="col-md-4 text-md-end">
+                <span class="badge bg-primary fs-6 mb-2">{{ edu.year }}</span>
+                <div *ngIf="edu.gpa" class="text-muted">
+                  <strong>{{ edu.percentorgpa }}: {{ edu.gpa }}</strong>
+                </div>
+              </div>
             </div>
-            <h5 class="card-subtitle mb-3 text-muted">
-              Delhi Technological University
-            </h5>
-            <p class="card-text">
-              Completed Bachelor's degree in Computer Science with a focus on
-              software development, data structures, algorithms, and web
-              technologies. Graduated with First Class Honors.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 mb-4">
-        <div class="card border-primary h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between mb-3">
-              <h4 class="card-title">Full Stack Web Development</h4>
-              <span class="badge bg-primary rounded-pill">2019-2020</span>
-            </div>
-            <h5 class="card-subtitle mb-3 text-muted">Coding Ninjas</h5>
-            <p class="card-text">
-              Intensive training in modern web development technologies
-              including MERN stack, React, Node.js, Express, and MongoDB.
-              Completed multiple projects and earned certification.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 mb-4">
-        <div class="card border-primary h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between mb-3">
-              <h4 class="card-title">Senior Secondary Education</h4>
-              <span class="badge bg-primary rounded-pill">2013-2015</span>
-            </div>
-            <h5 class="card-subtitle mb-3 text-muted">Delhi Public School</h5>
-            <p class="card-text">
-              Completed 12th grade with Science stream (PCM) with 92% aggregate.
-              Participated in various coding competitions and science
-              exhibitions.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 mb-4">
-        <div class="card border-primary h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between mb-3">
-              <h4 class="card-title">AWS Certified Developer</h4>
-              <span class="badge bg-primary rounded-pill">2021</span>
-            </div>
-            <h5 class="card-subtitle mb-3 text-muted">Amazon Web Services</h5>
-            <p class="card-text">
-              Earned AWS Certified Developer certification, demonstrating
-              expertise in developing, deploying, and debugging cloud-based
-              applications using AWS.
-            </p>
           </div>
         </div>
       </div>

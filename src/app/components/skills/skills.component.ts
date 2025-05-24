@@ -4,8 +4,8 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 
 interface Skill {
   name: string;
-  percentage: number;
-  type: 'success' | 'info' | 'primary' | 'danger' | 'warning'; // restrict to Bootstrap types
+  level: number;
+  category: string;
 }
 
 @Component({
@@ -15,19 +15,33 @@ interface Skill {
   styleUrl: './skills.component.css',
 })
 export class SkillsComponent {
-  frontendSkills: Skill[] = [
-    { name: 'HTML/CSS', percentage: 95, type: 'success' },
-    { name: 'JavaScript', percentage: 90, type: 'info' },
-    { name: 'React.js', percentage: 85, type: 'primary' },
-    { name: 'Angular', percentage: 80, type: 'danger' },
-    { name: 'Bootstrap', percentage: 90, type: 'warning' },
-  ];
+  skills: Skill[] = [
+    // Programming Languages
+    { name: 'JavaScript', level: 90, category: 'Programming Languages' },
+    { name: 'TypeScript', level: 70, category: 'Programming Languages' },
+    { name: 'Python', level: 80, category: 'Programming Languages' },
+    { name: 'Java', level: 70, category: 'Programming Languages' },
+    { name: 'C++', level: 80, category: 'Programming Languages' },
 
-  backendSkills: Skill[] = [
-    { name: 'Node.js', percentage: 85, type: 'success' },
-    { name: 'Express.js', percentage: 80, type: 'info' },
-    { name: 'MongoDB', percentage: 75, type: 'primary' },
-    { name: 'SQL', percentage: 70, type: 'danger' },
-    { name: 'NestJS', percentage: 65, type: 'warning' },
+    // Web Technologies
+    { name: 'HTML/CSS', level: 92, category: 'Frontend Technologies' },
+    { name: 'Bootstrap', level: 90, category: 'Frontend Technologies' },
+    { name: 'Angular', level: 88, category: 'Frontend Technologies' },
+    { name: 'React', level: 82, category: 'Frontend Technologies' },
+    { name: 'Tailwind CSS', level: 85, category: 'Frontend Technologies' },
+
+    // Tools & Databases
+    { name: 'Node.js', level: 75, category: 'Backend & Tools' },
+    { name: 'Express / MongoDB', level: 75, category: 'Backend & Tools' },
+    { name: 'NestJS / Mongoose', level: 70, category: 'Backend & Tools' },
+    { name: 'PHP / MySQL', level: 80, category: 'Backend & Tools' },
+    { name: 'Git/GitHub', level: 75, category: 'Backend & Tools' },
   ];
+  getSkillCategories(): string[] {
+    return [...new Set(this.skills.map((skill) => skill.category))];
+  }
+
+  getSkillsByCategory(category: string): Skill[] {
+    return this.skills.filter((skill) => skill.category === category);
+  }
 }

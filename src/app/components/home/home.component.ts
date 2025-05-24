@@ -2,7 +2,6 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
   ElementRef,
-  OnInit,
   ViewChild,
   AfterViewInit,
   Inject,
@@ -17,6 +16,13 @@ import Typed from 'typed.js';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements AfterViewInit {
+  socialMedia = {
+    facebook: 'https://www.facebook.com/seraviraj',
+    instaGram: 'https://www.instagram.com/seraviraj',
+    twitter: 'https://x.com/seraviraj',
+    linkedIn: 'https://www.linkedin.com/in/seraviraj',
+    website: 'https://seraviraj.github.io/raviraj/',
+  };
   @ViewChild('typedElement') typedElement!: ElementRef;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
