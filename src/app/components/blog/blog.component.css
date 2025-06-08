@@ -1,0 +1,9 @@
+.hover-lift {
+  transition: transform 0.2s ease-in-out;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+.min-vh-50 {
+  min-height: 50vh;
+}

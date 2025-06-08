@@ -27,14 +27,14 @@ export class ProjectsComponent {
     {
       id: 1,
       category: 'CONSTRUCTION',
-      title: 'Smart Infrastructure Solutions for Urban Development',
+      title: 'Vikash and Sanjeev Infra Solution Private Limited',
       projectUrl: 'https://vsispl.in',
       badge: 'Construction',
     },
     {
       id: 2,
       category: 'INSTITUTE',
-      title: 'Digital Wallet Training with Certification',
+      title: 'Sky Computer Education',
       projectUrl: 'https://skycomputereducation.com/homepage',
       badge: 'Institute',
     },

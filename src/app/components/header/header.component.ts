@@ -1,5 +1,6 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   NgbCollapseModule,
   NgbDropdownModule,
@@ -7,6 +8,9 @@ import {
 interface NavItem {
   name: string;
   link: string;
+  route?: string[];
+  id?: string;
+  bclass: string;
 }
 
 interface DropdownItem {
@@ -22,7 +26,14 @@ interface DropdownMenu {
 
 @Component({
   selector: 'app-header',
-  imports: [NgFor, NgbCollapseModule, NgIf, NgbDropdownModule],
+  imports: [
+    NgFor,
+    NgbCollapseModule,
+    NgIf,
+    NgbDropdownModule,
+    NgClass,
+    RouterLink,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -32,8 +43,8 @@ export class HeaderComponent {
 
   // Regular navigation items (before dropdowns)
   regularNavItems: NavItem[] = [
-    { name: 'Home', link: 'home' },
-    { name: 'About', link: 'about' },
+    { name: 'Home', link: 'home', bclass: '' },
+    { name: 'About', link: 'about', bclass: '' },
   ];
 
   // Dropdown menus configuration
@@ -43,16 +54,16 @@ export class HeaderComponent {
       items: [
         { name: 'Education', link: 'education' },
         { name: 'Skills', link: 'skills' },
-        { name: 'Certification', link: 'certification' },
       ],
     },
   ];
 
   // Navigation items after dropdowns
   endNavItems: NavItem[] = [
-    { name: 'Services', link: 'services' },
-    { name: 'Projects', link: 'projects' },
-    { name: 'Contact', link: 'contact' },
+    { name: 'Services', link: '#services', bclass: '' },
+    { name: 'Projects', link: '#projects', bclass: '' },
+    { name: 'Contact', link: '#contact', bclass: '' },
+    { name: 'Blog', link: '/blog', bclass: 'bg-primary rounded' },
   ];
 
   setActiveOption(section: string) {

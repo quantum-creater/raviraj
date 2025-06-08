@@ -74,12 +74,28 @@
           <!-- Regular nav items after dropdowns -->
           <li class="nav-item" *ngFor="let item of endNavItems">
             <a
-              class="nav-link px-3"
+              *ngIf="item.link.startsWith('#')"
+              class="nav-link px-3 'item.bclass'"
+              [ngClass]="item.bclass"
               [class.active]="activeSection === item.link"
-              [href]="'#' + item.link"
+              [href]="item.link"
               (click)="setActiveOption(item.link); toggleNavigation()"
-              >{{ item.name }}</a
             >
+              {{ item.name }}
+            </a>
+
+            <!-- Router links (/blog, etc.) -->
+            <a
+              *ngIf="!item.link.startsWith('#')"
+              class="nav-link px-3 'item.bclass'"
+              [ngClass]="item.bclass"
+              [class.active]="activeSection === item.link"
+              [routerLink]="item.link"
+              target="_blank"
+              (click)="setActiveOption(item.link); toggleNavigation()"
+            >
+              {{ item.name }}
+            </a>
           </li>
         </ul>
       </div>

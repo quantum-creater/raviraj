@@ -11,7 +11,7 @@ export class AboutComponent {
   profileData = {
     name: 'Ravi Raj',
     birthday: '9 March 2000',
-    age: 30,
+    age: 24,
     website: 'www.example.com',
     degree: 'Graduation',
     phone: '+91-9155558993',
